@@ -62,7 +62,10 @@ fun Design(viewmodel: Weatherviewmodel){
 
             OutlinedTextField(modifier = Modifier.weight(1f),
                 value = city,
+                singleLine = true,
+                maxLines = 1,
                 onValueChange = {city = it},
+
             label = { Text(text = "Enter your city")},
                 )
 
