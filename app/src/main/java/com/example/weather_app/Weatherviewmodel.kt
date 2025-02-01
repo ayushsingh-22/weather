@@ -12,13 +12,13 @@ import com.example.weather_app.api.constant
 import kotlinx.coroutines.launch
 
 
-class Weatherviewmodel: ViewModel() {
+class Weatherviewmodel : ViewModel() {
 
     private val weatherApi = RetrofitInstance.apiService
     private val weatherData = MutableLiveData<NetrworkResponse<WeatherModel>>()
     val weatherResult: LiveData<NetrworkResponse<WeatherModel>> = weatherData
 
-    fun getData(city: String){
+    fun getData(city: String) {
 
         weatherData.value = NetrworkResponse.loading
 
@@ -26,24 +26,21 @@ class Weatherviewmodel: ViewModel() {
 
             try {
                 val response = weatherApi.getCurrentWeather(constant.apikey, city)
-                if(response.isSuccessful){
+                if (response.isSuccessful) {
                     response.body()?.let {
                         weatherData.value = NetrworkResponse.Success(it)
                     }
 
-                }
-                else{
+                } else {
 
                     weatherData.value = NetrworkResponse.Error("Something went wrong")
                 }
-            }
-
-            catch (e: Exception){
+            } catch (e: Exception) {
                 weatherData.value = NetrworkResponse.Error("Something went wrong")
             }
 
-            }
-
         }
+
+    }
 
 }
