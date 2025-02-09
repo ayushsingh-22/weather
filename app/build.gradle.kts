@@ -73,6 +73,6 @@ dependencies {
 
     implementation(libs.androidx.runtime.livedata)
 
-    implementation("io.coil-kt:coil-compose:2.0.0")
+    implementation(libs.coil.compose)
 
 }
